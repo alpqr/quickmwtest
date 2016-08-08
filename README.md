@@ -1,7 +1,6 @@
 Multi-screen test app for Qt 5.7 and up using the eglfs platform
-plugin. Targeted mainly at the NVIDIA DRIVE CX.
-
-There is not much to see in the app for now.
+plugin. Targeted mainly at the NVIDIA DRIVE CX and is the test bed for
+QTBUG-55188, QTBUG-55161 and QTBUG-54151.
 
 There will be one QQuickView created for each screen. With the default
 threaded render loop both will get its own render thread which is good

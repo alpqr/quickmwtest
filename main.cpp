@@ -1,6 +1,7 @@
 #include <QGuiApplication>
 #include <QQmlContext>
 #include <QQuickView>
+#include <QScreen>
 #include <QDebug>
 
 static QQuickView *addView(QScreen *screen, int screenIdx)
@@ -9,7 +10,15 @@ static QQuickView *addView(QScreen *screen, int screenIdx)
     QQuickView *v = new QQuickView;
     v->setScreen(screen);
     v->setResizeMode(QQuickView::SizeRootObjectToView);
+
     v->rootContext()->setContextProperty("screenIdx", screenIdx);
+    v->rootContext()->setContextProperty("screenGeom", screen->geometry());
+    v->rootContext()->setContextProperty("screenAvailGeom", screen->availableGeometry());
+    v->rootContext()->setContextProperty("screenVirtGeom", screen->virtualGeometry());
+    v->rootContext()->setContextProperty("screenAvailVirtGeom", screen->availableVirtualGeometry());
+    v->rootContext()->setContextProperty("screenPhysSizeMm", screen->physicalSize());
+    v->rootContext()->setContextProperty("screenRefresh", screen->refreshRate());
+
     v->setSource(QUrl("qrc:/screen.qml"));
     return v;
 }
