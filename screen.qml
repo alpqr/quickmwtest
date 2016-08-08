@@ -30,4 +30,21 @@ Rectangle {
             visible: screenPhysSizeMm.width == 0 && screenPhysSizeMm.height == 0
         }
     }
+
+    Rectangle {
+        color: "red"
+        width: 160
+        height: 80
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        Text {
+            anchors.centerIn: parent
+            text: "Exit"
+            color: "yellow"
+        }
+        MouseArea {
+            anchors.fill: parent
+            onClicked: Qt.quit()
+        }
+    }
 }

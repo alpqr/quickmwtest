@@ -1,6 +1,7 @@
 #include <QGuiApplication>
-#include <QQmlContext>
 #include <QQuickView>
+#include <QQmlEngine>
+#include <QQmlContext>
 #include <QScreen>
 #include <QDebug>
 
@@ -8,6 +9,7 @@ static QQuickView *addView(QScreen *screen, int screenIdx)
 {
     qDebug("Creating new QQuickView for screen %p", screen);
     QQuickView *v = new QQuickView;
+
     v->setScreen(screen);
     v->setResizeMode(QQuickView::SizeRootObjectToView);
 
@@ -20,6 +22,9 @@ static QQuickView *addView(QScreen *screen, int screenIdx)
     v->rootContext()->setContextProperty("screenRefresh", screen->refreshRate());
 
     v->setSource(QUrl("qrc:/screen.qml"));
+
+    QObject::connect(v->engine(), &QQmlEngine::quit, qGuiApp, &QCoreApplication::quit);
+
     return v;
 }
 
