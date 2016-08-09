@@ -32,6 +32,24 @@ Rectangle {
     }
 
     Rectangle {
+        color: "lightGray"
+        width: parent.width / 3
+        height: parent.height / 3
+        anchors.centerIn: parent
+
+        MouseArea {
+            anchors.fill: parent
+            onClicked: clickInfo.text = "Clicked at " + mouse.x + ", " + mouse.y
+        }
+
+        Text {
+            id: clickInfo
+            anchors.centerIn: parent
+            color: "red"
+        }
+    }
+
+    Rectangle {
         color: "red"
         width: 160
         height: 80
