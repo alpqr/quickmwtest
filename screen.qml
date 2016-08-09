@@ -12,7 +12,7 @@ Rectangle {
             font.pointSize: 32
             color: "white"
             text: "This is QGuiApplication::screens()[" + screenIdx + "]" +
-                "\ngeometry: " + screenGeom + // may be incorrect, see QTBUG-55188
+                "\ngeometry: " + screenGeom +
                 "\n  available geometry: " + screenAvailGeom +
                 "\nvirtual geometry: " + screenVirtGeom +
                 "\n  available virtual geometry: " + screenAvailVirtGeom
@@ -26,7 +26,7 @@ Rectangle {
         Text {
             font.pointSize: 12
             color: "red"
-            text: "  should override with QT_QPA_EGLFS_PHYSICAL_WIDTH and HEIGHT" // but see QTBUG-55188
+            text: "  should override with physicalWidth and height via QT_QPA_EGLFS_KMS_CONFIG"
             visible: screenPhysSizeMm.width == 0 && screenPhysSizeMm.height == 0
         }
     }
