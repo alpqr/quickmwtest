@@ -12,14 +12,17 @@ like the following, assuming a mouse and two screens connected via
 HDMI and DisplayPort:
 
 ```
+nvidia@nvidia:~$ ./quickmwtest
 qt.qpa.egldeviceintegration: EGL device integration plugin keys: ("eglfs_kms_egldevice")
 qt.qpa.egldeviceintegration: EGL device integration plugin keys (sorted): ("eglfs_kms_egldevice")
 qt.qpa.egldeviceintegration: Trying to load device EGL integration "eglfs_kms_egldevice"
 qt.qpa.eglfs.kms: New DRM/KMS on EGLDevice integration created
 qt.qpa.egldeviceintegration: Using EGL device integration "eglfs_kms_egldevice"
+
 qt.qpa.eglfs.kms: Found 1 EGL devices
+qt.qpa.eglfs.kms: Opening DRM device drm-nvdc
 qt.qpa.eglfs.kms: Creating display
-qt.qpa.eglfs.kms: "DP1" mode count: 11
+qt.qpa.eglfs.kms: "DP1" mode count: 10
 qt.qpa.eglfs.kms: mode 0 1920 x 1200 @ 59 hz
 qt.qpa.eglfs.kms: mode 1 720 x 400 @ 70 hz
 qt.qpa.eglfs.kms: mode 2 640 x 480 @ 59 hz
@@ -30,8 +33,9 @@ qt.qpa.eglfs.kms: mode 6 1280 x 1024 @ 60 hz
 qt.qpa.eglfs.kms: mode 7 1600 x 1200 @ 60 hz
 qt.qpa.eglfs.kms: mode 8 1680 x 1050 @ 59 hz
 qt.qpa.eglfs.kms: mode 9 1920 x 1080 @ 60 hz
-qt.qpa.eglfs.kms: mode 10 1920 x 1080 @ 60 hz
 qt.qpa.eglfs.kms: Selected mode 0 : 1920 x 1200 @ 59 hz for output "DP1"
+qt.qpa.eglfs.kms: Physical size is QSizeF(0, 0) mm for output "DP1"
+qt.qpa.eglfs.kms: Creating new global mouse cursor
 qt.qpa.eglfs.kms: "HDMI1" mode count: 11
 qt.qpa.eglfs.kms: mode 0 1920 x 1080 @ 59 hz
 qt.qpa.eglfs.kms: mode 1 640 x 480 @ 59 hz
@@ -45,40 +49,42 @@ qt.qpa.eglfs.kms: mode 8 1440 x 900 @ 59 hz
 qt.qpa.eglfs.kms: mode 9 1600 x 1200 @ 60 hz
 qt.qpa.eglfs.kms: mode 10 1680 x 1050 @ 59 hz
 qt.qpa.eglfs.kms: Selected mode 0 : 1920 x 1080 @ 59 hz for output "HDMI1"
+qt.qpa.eglfs.kms: Physical size is QSizeF(0, 0) mm for output "HDMI1"
+
+qt.qpa.eglfs.kms: Sorted screen list: QVector(OrderedScreen(0x44a3d0 : 2147483647), OrderedScreen(0x44b700 : 2147483647))
+qt.qpa.eglfs.kms: Adding screen 0x44a3d0 to QPA with geometry QRect(0,0 1920x1200)
+qt.qpa.eglfs.kms: Adding screen 0x44b700 to QPA with geometry QRect(1920,0 1920x1080)
+
 qt.qpa.input: evdevkeyboard: Using device discovery
 ...
-qt.qpa.input: static device discovery for type QFlags(0x1|0x2)
-qt.qpa.input: doing static device discovery for  "/dev/input/event0"
 qt.qpa.input: Found mouse at "/dev/input/event0"
-qt.qpa.input: doing static device discovery for  "/dev/input/mice"
-qt.qpa.input: doing static device discovery for  "/dev/input/mouse0"
 qt.qpa.input: Found matching devices ("/dev/input/event0")
 qt.qpa.input: Adding mouse at "/dev/input/event0"
 qt.qpa.input: create mouse handler for "/dev/input/event0" ""
+qt.qpa.input: evdevtouch: Using device discovery
 ...
 
 Application sees 2 screens
-(0x4499d0, 0x447cf0)
+(QScreen(0x449d80, name="DP1"), QScreen(0x449d40, name="HDMI1"))
 
-Creating new QQuickView for screen 0x4499d0
-	
+Creating new QQuickView for screen 0x449d80
 qt.scenegraph.general: threaded render loop
 qt.scenegraph.general: Using sg animation driver
 qt.scenegraph.general: Animation Driver: using vsync: 16.95 ms
 qt.qpa.eglfs.kms: Creating stream
-qt.qpa.eglfs.kms: Created stream 0x4e5481 on display 0x1
+qt.qpa.eglfs.kms: Created stream 0x4d6ba1 on display 0x1
 qt.qpa.eglfs.kms: Output has 6 layers
 qt.qpa.eglfs.kms: Searching for id: 1000
-qt.qpa.eglfs.kms:   [0] layer 0x4471e1 - crtc 1000
-qt.qpa.eglfs.kms:   [1] layer 0x448ed1 - crtc 1001
-qt.qpa.eglfs.kms:   [2] layer 0x448f11 - plane 4001
-qt.qpa.eglfs.kms:   [3] layer 0x448f51 - plane 4002
-qt.qpa.eglfs.kms:   [4] layer 0x448f91 - plane 4004
-qt.qpa.eglfs.kms:   [5] layer 0x448fd1 - plane 4005
-qt.qpa.eglfs.kms: Using layer 0x4471e1
+qt.qpa.eglfs.kms:   [0] layer 0x4481d1 - crtc 1000
+qt.qpa.eglfs.kms:   [1] layer 0x449ec1 - crtc 1001
+qt.qpa.eglfs.kms:   [2] layer 0x449f01 - plane 4001
+qt.qpa.eglfs.kms:   [3] layer 0x449f41 - plane 4002
+qt.qpa.eglfs.kms:   [4] layer 0x449f81 - plane 4004
+qt.qpa.eglfs.kms:   [5] layer 0x449fc1 - plane 4005
+qt.qpa.eglfs.kms: Using layer 0x4481d1
 qt.qpa.eglfs.kms: Stream producer format is QSurfaceFormat(version 2.0, options QFlags(), depthBufferSize 24, redBufferSize 8, greenBufferSize 8, blueBufferSize 8, alphaBufferSize 0, stencilBufferSize 8, samples 0, swapBehavior 0, swapInterval 1, profile  0)
 qt.qpa.eglfs.kms: Creating stream producer surface of size 1920x1200
-qt.qpa.eglfs.kms: Created stream producer surface 0x4d9191
+qt.qpa.eglfs.kms: Created stream producer surface 0x4d8081
 qt.scenegraph.general: Using sg animation driver
 qt.scenegraph.general: Animation Driver: using vsync: 16.95 ms
 qt.scenegraph.general: texture atlas dimensions: 2048x2048
@@ -89,29 +95,28 @@ qt.scenegraph.general: Samples:            0
 qt.scenegraph.general: GL_VENDOR:          NVIDIA Corporation
 qt.scenegraph.general: GL_RENDERER:        GP10B (nvgpu)/integrated
 qt.scenegraph.general: GL_VERSION:         OpenGL ES 3.2 NVIDIA 367.00
-qt.scenegraph.general: GL_EXTENSIONS:      ....
+qt.scenegraph.general: GL_EXTENSIONS:      ...
 qt.scenegraph.general: Max Texture Size:  32768
 qt.scenegraph.general: Debug context:     false
 qt.qpa.eglfs.kms: Setting mode
 
-Creating new QQuickView for screen 0x447cf0
-	
+Creating new QQuickView for screen 0x449d40
 qt.qpa.eglfs.kms: Creating stream
-qt.qpa.eglfs.kms: Created stream 0x5bccd1 on display 0x1
+qt.qpa.eglfs.kms: Created stream 0x5bbec1 on display 0x1
 qt.qpa.eglfs.kms: Output has 6 layers
 qt.qpa.eglfs.kms: Searching for id: 1001
-qt.qpa.eglfs.kms:   [0] layer 0x4471e1 - crtc 1000
-qt.qpa.eglfs.kms:   [1] layer 0x448ed1 - crtc 1001
-qt.qpa.eglfs.kms:   [2] layer 0x448f11 - plane 4001
-qt.qpa.eglfs.kms:   [3] layer 0x448f51 - plane 4002
-qt.qpa.eglfs.kms:   [4] layer 0x448f91 - plane 4004
-qt.qpa.eglfs.kms:   [5] layer 0x448fd1 - plane 4005
-qt.qpa.eglfs.kms: Using layer 0x448ed1
+qt.qpa.eglfs.kms:   [0] layer 0x4481d1 - crtc 1000
+qt.qpa.eglfs.kms:   [1] layer 0x449ec1 - crtc 1001
+qt.qpa.eglfs.kms:   [2] layer 0x449f01 - plane 4001
+qt.qpa.eglfs.kms:   [3] layer 0x449f41 - plane 4002
+qt.qpa.eglfs.kms:   [4] layer 0x449f81 - plane 4004
+qt.qpa.eglfs.kms:   [5] layer 0x449fc1 - plane 4005
+qt.qpa.eglfs.kms: Using layer 0x449ec1
 qt.qpa.eglfs.kms: Stream producer format is QSurfaceFormat(version 2.0, options QFlags(), depthBufferSize 24, redBufferSize 8, greenBufferSize 8, blueBufferSize 8, alphaBufferSize 0, stencilBufferSize 8, samples 0, swapBehavior 0, swapInterval 1, profile  0)
 qt.qpa.eglfs.kms: Creating stream producer surface of size 1920x1080
-qt.qpa.eglfs.kms: Created stream producer surface 0x5bfaf1
+qt.qpa.eglfs.kms: Created stream producer surface 0x5bece1
 qt.scenegraph.general: Using sg animation driver
 qt.scenegraph.general: Animation Driver: using vsync: 16.95 ms
 qt.scenegraph.general: texture atlas dimensions: 2048x2048
-qt.qpa.eglfs.kms: Mode already set
+qt.qpa.eglfs.kms: Setting mode
 ```
