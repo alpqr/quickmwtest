@@ -1,6 +1,7 @@
 Multi-screen test app for Qt 5.7 and up using the eglfs platform
-plugin. Targeted mainly at the NVIDIA DRIVE CX and is the test bed for
-QTBUG-55188, QTBUG-55161 and QTBUG-54151.
+plugin. Targeted mainly at the NVIDIA DRIVE CX and Renesas R-Car H2
+and H3, and is the test bed for QTBUG-55188, QTBUG-55161 and
+QTBUG-54151, QTBUG-57762, etc.
 
 There will be one QQuickView created for each screen. With the default
 threaded render loop both will get its own render thread which is good
@@ -9,7 +10,40 @@ since they can then be throttled independently.
 
 Logging is enabled automatically, a typical output should be something
 like the following, assuming a mouse and two screens connected via
-HDMI and DisplayPort:
+HDMI and DisplayPort.
+
+Pay special attention to lines like:
+
+```
+qt.qpa.eglfs.kms: Physical size is QSizeF(0, 0) mm for output "HDMI1"
+```
+
+This shows that the DRM subsystem did not report a physical width and
+height for the output in question.  If this happens, you will want to
+manually provide the correct size via the JSON configuration file, see
+http://doc-snapshots.qt.io/qt5-5.8/embedded-linux.html#eglfs-with-eglfs-kms-backend
+
+```
+qt.qpa.eglfs.kms: Sorted screen list: QVector(OrderedScreen(0x44a3d0 : 2147483647), OrderedScreen(0x44b700 : 2147483647))
+qt.qpa.eglfs.kms: Adding screen 0x44a3d0 to QPA with geometry QRect(0,0 1920x1200)
+qt.qpa.eglfs.kms: Adding screen 0x44b700 to QPA with geometry QRect(1920,0 1920x1080)
+...
+Application sees 2 screens
+(QScreen(0x449d80, name="DP1"), QScreen(0x449d40, name="HDMI1"))
+```
+
+This shows what gets registered to Qt. In the example above two
+QScreen instances will show in QGuiApplication::screens().
+
+If there are additional, unexpected outputs (some boards tend to
+report LVDS as connected even when it is not, for instance), disable
+it via the config file.
+
+Same goes if the resolution or the virtual desktop layout is not as
+expected: provide a config file.
+
+
+Full example log:
 
 ```
 nvidia@nvidia:~$ ./quickmwtest
