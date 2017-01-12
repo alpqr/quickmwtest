@@ -33,14 +33,28 @@ Application sees 2 screens
 ```
 
 This shows what gets registered to Qt. In the example above two
-QScreen instances will show in QGuiApplication::screens().
+QScreen instances will show in QGuiApplication::screens(), with
+different resolutions (not necessarily ideal), with the HDMI screen
+placed to the right of the DisplayPort one in the virtual desktop.
+
+NB! future Qt versions are expected to improve logging; there are
+also continuous improvements to the multiscreen support in general, so
+do not be surprised if something looks different with newer Qt
+versions
 
 If there are additional, unexpected outputs (some boards tend to
 report LVDS as connected even when it is not, for instance), disable
 it via the config file.
 
 Same goes if the resolution or the virtual desktop layout is not as
-expected: provide a config file.
+expected: provide a config file. As an example, check
+example_rcar_h2_config.json. There we configure HDMI and VGA to 720p
+and get rid of an unwanted third output, and we manually specify the
+physical size for the VGA output as it does not get reported
+automatically. To use this configuration in Qt applications, just set
+the environment variable
+QT_QPA_EGLFS_KMS_CONFIG=example_rcar_h2_config.json
+
 
 
 Full example log:

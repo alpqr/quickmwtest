@@ -1,0 +1,9 @@
+{
+    "device": "/dev/dri/card0",
+    "outputs": [
+	{ "name": "HDMI1", "mode": "1280x720" },
+        { "name": "VGA1", "mode": "1280x720", "physicalWidth": 597, "physicalHeight": 336 },
+        { "name": "LVDS1", "mode": "off" }
+    ]
+}
+
