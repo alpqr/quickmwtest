@@ -17,10 +17,6 @@ Window {
                     "\nheight: " + Qt.application.screens[0].height
             }
         }
-        MouseArea {
-            anchors.fill: parent
-            onClicked: screenChangeTest()
-        }
     }
 
     Window {
@@ -40,16 +36,6 @@ Window {
                         "\nheight: " + Qt.application.screens[1].height
                 }
             }
-            MouseArea {
-                anchors.fill: parent
-                onClicked: screenChangeTest()
-            }
         }
-    }
-
-    function screenChangeTest() {
-        console.log("swapping screens");
-        w1.targetScreen = Qt.application.screens[1];
-        w2.targetScreen = Qt.application.screens[0];
     }
 }
