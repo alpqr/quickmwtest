@@ -11,6 +11,8 @@ static QQuickView *addView(QScreen *screen, int screenIdx)
     QQuickView *v = new QQuickView;
 
     v->setScreen(screen);
+    v->setGeometry(QRect(screen->availableGeometry().topLeft(), QSize(128, 128)));
+    qDebug() << "Initial QQuickView geometry is" << v->geometry();
     v->setResizeMode(QQuickView::SizeRootObjectToView);
 
     v->rootContext()->setContextProperty("screenIdx", screenIdx);
@@ -36,7 +38,7 @@ int main(int argc, char **argv)
     QGuiApplication app(argc, argv);
 
     QList<QScreen *> screens = app.screens();
-    qDebug("Application sees %d screens", screens.count());
+    qDebug("Application sees %d screens", int(screens.count()));
     qDebug() << screens;
 
     QVector<QQuickView *> views;

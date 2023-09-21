@@ -32,6 +32,7 @@ Rectangle {
     }
 
     Rectangle {
+        visible: false // ###
         color: "lightGray"
         width: parent.width / 3
         height: parent.height / 3
