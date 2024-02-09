@@ -48,6 +48,25 @@ int main(int argc, char **argv)
         v->showFullScreen();
     }
 
+    QObject::connect(&app, &QGuiApplication::screenAdded, &app, [&](QScreen *screen) {
+        QQuickView *v = addView(screen, views.count());
+        views.append(v);
+        for (auto *view : views)
+        {
+            view->showFullScreen();
+        }
+    });
+
+    QObject::connect(&app, &QGuiApplication::screenRemoved, &app, [&](QScreen *screen) {
+        for (QQuickView *v : views) {
+            if (v->screen() == screen) {
+                v->close();
+                views.removeOne(v);
+                v->deleteLater();
+            }
+        }
+    });
+
     int r = app.exec();
 
     qDeleteAll(views);
